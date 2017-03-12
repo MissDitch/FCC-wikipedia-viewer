@@ -4,6 +4,10 @@ function loadArticles(e) {
     var searchBox = document.getElementById('searchBox');
     var searchBtn = document.getElementById('searchBtn');  
     var wikiLinks = document.getElementById('wikiLinks');   
+
+    wikiSuggestions.innerHTML = "";
+    wikiLinks.innerHTML = "";
+    
     var searchString = searchBox.value;
     console.log(searchString);
     var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchString + 
@@ -18,11 +22,12 @@ function loadArticles(e) {
     });  
 
     var wikiRequestTimeout = setTimeout(function(){
-       wikiLinks.text("failed to get wikipedia resources");
+       wikiLinks.innerHTML = "failed to get wikipedia resources";
     }, 8000);
 
      // clear out old data before new request
     searchBox.value = "";
+    
 
    // 
    /* return false;  use e.preventDefault instead, return false is deprecated? 
@@ -35,22 +40,52 @@ function loadArticles(e) {
 
 function autoComplete() {
     var searchBox = document.getElementById('searchBox');
-    var searchString = searchBox.value;
-    var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchString + 
-    "&suggest=true&format=json&callback=?";  
-
-    if (searchString.length > 2) { $.ajax({
-        url: wikiUrl,
+    $.ajax({
+        url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchBox.value + 
+    "&suggest=true&limit=10format=json&callback=?",
         dataType: "jsonp"
     }).done(function(data)   {
-        showSuggestions(data);
-        clearTimeout(wikiRequestTimeout);
-    });   
-  }
+        showOptions(data);
+    }); 
 }
 
-function showSuggestions(data) {
-    console.log(data);
+function showOptions(data) {
+    //console.log(data);
+    wikiSuggestions.innerHTML = "";
+    var titles = data[1];
+    var urls = data[3];
+    var length = titles.length;
+    var count = 1;
+    for (var i = 0; i < length; i++) {  
+        var title = titles[i];
+        var option = createOptionElement(title, count);            
+        wikiSuggestions.appendChild(option);
+        count++;
+    } 
+  //  searchBox.value = chooseOption();  
+
+}
+
+function createOptionElement(title, count) {
+     var option = document.createElement("option");
+     option.setAttribute("id", count);
+     option.setAttribute("class", "suggestion");
+     var text = document.createTextNode(title);
+     option.appendChild(text);
+
+    return option;
+}
+function chooseOption(e) {
+    searchBox.value = e.target.value;
+   /* var options = document.getElementsByClassName("suggestion");
+    var length = options.length;
+    var chosen = null;
+    for (var i = 0; i < length; i++) { 
+        if (options[i].hasAttribute("checked")) {
+            chosen = options[i];
+        }
+    }
+    return chosen;  */
 }
 
 function showArticles(data) {
@@ -92,4 +127,5 @@ function showArticles(data) {
 
 
 searchBtn.addEventListener("click", loadArticles);
-searchBox.addEventListener("keydown", autoComplete);
+searchBox.addEventListener("keyup", autoComplete);
+wikiSuggestions.addEventListener("change", chooseOption);
