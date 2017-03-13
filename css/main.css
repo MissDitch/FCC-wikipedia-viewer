@@ -1,0 +1,14 @@
+body {
+	font-family: 'Open Sans';
+}
+a:hover, a:selection {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+
+.container {
+  padding: 100px 0;
+}
+
