@@ -3,13 +3,14 @@ function loadArticles(e) {
 //e.preventDefault(); // needed if button has 'type=submit' attribute. Without it no results are shown
     var searchBox = document.getElementById('searchBox');
     var searchBtn = document.getElementById('searchBtn');  
-    var wikiLinks = document.getElementById('wikiLinks');   
-
+    var wikiLinks = document.getElementById('wikiLinks'); 
+    var wikiSuggestions = document.getElementById('wikiSuggestions'); 
+    
     wikiSuggestions.innerHTML = "";
     wikiLinks.innerHTML = "";
     
     var searchString = searchBox.value;
-    console.log(searchString);
+  //  console.log(searchString);
     var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchString + 
     "&format=json&callback=?"; 
 
@@ -89,7 +90,7 @@ function chooseOption(e) {
 }
 
 function showArticles(data) {
-    console.log(data);
+ //   console.log(data);
     var titles = data[1];
     var paragraphs = data[2];
     var urls = data[3];
@@ -126,6 +127,31 @@ function showArticles(data) {
 }
 
 
+function loadRandomArticle() {
+    var randomLink = document.getElementById("randomLink"); 
+    var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=5";
+ 
+    $.ajax({
+        url: wikiUrl,
+        dataType: "jsonp",
+    }).done(function(data)   {
+    //  console.log(data);
+    var title = data.query.random[0].title;    
+    showRandomArticle(title);
+    // clearTimeout(wikiRequestTimeout);
+    });  
+}
+
+function showRandomArticle(title) {  
+    var regEx = /\s/g;
+    var newTitle = title.replace(regEx, "%20");  
+    var url = "https://en.wikipedia.org/wiki/" + newTitle;
+    //console.log(url);
+    var windowObjectReference =  window.open(url); 
+}
+
+
 searchBtn.addEventListener("click", loadArticles);
 searchBox.addEventListener("keyup", autoComplete);
 wikiSuggestions.addEventListener("change", chooseOption);
+randomLink.addEventListener("click", loadRandomArticle);
