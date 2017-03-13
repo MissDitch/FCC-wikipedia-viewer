@@ -129,11 +129,15 @@ function showArticles(data) {
 
 function loadRandomArticle() {
     var randomLink = document.getElementById("randomLink"); 
+
+    /*  namespace=0 means no main namespace. This namespace typically contains the bulk of the content pages in a wiki.
+        namespace=1 "Talk" namespace, namespace=2: "User" namespace
+    */
     var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=5";
- 
+
     $.ajax({
         url: wikiUrl,
-        dataType: "jsonp",
+        dataType: "jsonp"
     }).done(function(data)   {
     //  console.log(data);
     var title = data.query.random[0].title;    
