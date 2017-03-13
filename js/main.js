@@ -14,15 +14,21 @@ function init() {
 
 // get the data for the autocomplete list 
 function autoComplete() {
-    var searchBox = document.getElementById('searchBox');
-    $.ajax({
-        url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchBox.value + 
+   // var searchBox = document.getElementById('searchBox');
+    if(searchBox.value != "") {
+        $.ajax({
+            url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchBox.value + 
     "&suggest=true&limit=10format=json&callback=?",
-        dataType: "jsonp"
-    }).done(function(data)   {
-        var titles = data[1];
-        showOptions(titles);
-    }); 
+            dataType: "jsonp"
+        }).done(function(data)   {
+            var titles = data[1];
+            showOptions(titles);
+        }); 
+    }
+    else {
+        wikiSuggestions.innerHTML = "";
+    }
+    
 }
 
 //show autocomplete list
@@ -65,6 +71,9 @@ function loadArticles(e) {
     wikiSuggestions.innerHTML = "";
     wikiLinks.innerHTML = "";    
     var searchString = searchBox.value;
+    if (searchString == "") {
+        return;
+    }
     var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchString + 
     "&format=json&callback=?"; 
 
