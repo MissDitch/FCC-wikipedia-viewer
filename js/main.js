@@ -59,12 +59,26 @@ function showOptions(data) {
     var count = 1;
     for (var i = 0; i < length; i++) {  
         var title = titles[i];
-        var option = createOptionElement(title, count);            
-        wikiSuggestions.appendChild(option);
+        var listItem = createListElement(title);
+      //  var option = createOptionElement(title, count);            
+        wikiSuggestions.appendChild(listItem);
         count++;
     } 
   //  searchBox.value = chooseOption();  
 
+}
+
+function createListElement(title) {
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.setAttribute("href", "#");
+    a.addEventListener("click", chooseListItem);
+    //a.setAttribute("target", "_blank");
+    
+    var text = document.createTextNode(title);
+    a.appendChild(text);    
+    li.appendChild(a);    
+    return li;
 }
 
 function createOptionElement(title, count) {
@@ -78,15 +92,11 @@ function createOptionElement(title, count) {
 }
 function chooseOption(e) {
     searchBox.value = e.target.value;
-   /* var options = document.getElementsByClassName("suggestion");
-    var length = options.length;
-    var chosen = null;
-    for (var i = 0; i < length; i++) { 
-        if (options[i].hasAttribute("checked")) {
-            chosen = options[i];
-        }
-    }
-    return chosen;  */
+}
+
+function chooseListItem(e) {
+    searchBox.value = e.target.innerHTML;
+    //console.log(searchBox.value);
 }
 
 function showArticles(data) {
