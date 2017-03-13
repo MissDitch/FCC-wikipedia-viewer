@@ -1,4 +1,3 @@
-
 function init() {
     var searchBox = document.getElementById('searchBox');
     var searchBtn = document.getElementById('searchBtn');  
@@ -7,7 +6,6 @@ function init() {
     searchBtn.addEventListener("click", loadArticles);
     searchBox.addEventListener("keyup", autoComplete);
     wikiSuggestions.addEventListener("change", chooseListItem);
-    randomLink.addEventListener("click", loadRandomArticle);
 }
 
 /* AUTOCOMPLETE */
@@ -27,8 +25,7 @@ function autoComplete() {
     }
     else {
         wikiSuggestions.innerHTML = "";
-    }
-    
+    }    
 }
 
 //show autocomplete list
@@ -126,37 +123,6 @@ function showArticles(data) {
     li.appendChild(a);
 
     return li;
-}
-
-
-/* RANDOM ARTICLE */
-
-/* the same effect is achieved by using <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"> 
-namespace=0 means no main namespace. This namespace typically contains the bulk of the content pages in a wiki.
-namespace=1 "Talk" namespace, namespace=2: "User" namespace. There are many more namespaces.
-*/
-
-//event handler for 'show random article' button, get data for random article
-function loadRandomArticle() {
-    var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=5";
-
-    $.ajax({
-        url: wikiUrl,
-        dataType: "jsonp"
-    }).done(function(data)   {
-    //  console.log(data);
-    var title = data.query.random[0].title;    
-    showRandomArticle(title);
-    // clearTimeout(wikiRequestTimeout);
-    });  
-}
-
-//show random article in new tab
-function showRandomArticle(title) {  
-    var regEx = /\s/g;
-    var newTitle = title.replace(regEx, "%20");  
-    var url = "https://en.wikipedia.org/wiki/" + newTitle;
-    var windowObjectReference =  window.open(url); 
 }
 
 init();
