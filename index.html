@@ -18,16 +18,52 @@
 
   <div id="" class="container">
     
-    <h1><span>W</span>ikipedia <span>V</span>iewer</h1>         
+    <h1><span>W</span>ikipedia <span>V</span>iewer</h1> 
 
-    <div id="" class="col-xs-12 random">
+     <div id="leftIcon" class="col-xs-6 ">   
+
+    <div class="stack"> 
+    <svg  version="1.1" id="Layer_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="164.732" height="120.186"
+	 viewBox="0 0 164.732 120.186" overflow="visible" enable-background="new 0 0 164.732 120.186" xml:space="preserve">
+<g>
+	<circle fill="#FFFFFF" stroke="#000000" stroke-width="12" cx="110.871" cy="66.324" r="47.861"/>
+	<line fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" x1="6" y1="6" x2="67.237" y2="41.355"/>
+</g>
+</svg>
+
+     
       <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
-      <button id="randomLink" type="button">Random Article</button> 
+      <div id="randomLink" class="stackChild random ">Random Article</div> 
       </a>
-    </div>   <!-- End random-->     
+    </div>   <!-- End stack-->     
+    </div>     <!-- End leftIcon-->  
+    
+
+ <div id="rightIcon" class="col-xs-6 ">   
+
+    <div class="stack"> 
+    <svg  version="1.1" id="Layer_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="164.731" height="120.186"
+	 viewBox="0 0 164.731 120.186" overflow="visible" enable-background="new 0 0 164.731 120.186" xml:space="preserve">
+<g>
+	<circle fill="#FFFFFF" stroke="#000000" stroke-width="12" cx="53.861" cy="66.324" r="47.861"/>
+	<line fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" x1="158.731" y1="6" x2="97.494" y2="41.355"/>
+</g>
+</svg>
+
+     
+      <a href="#">
+      <div id="searchLink" class="stackChild search">Search anything</div> 
+      </a>
+    </div>   <!-- End stack-->     
+    </div>     <!-- End rightIcon-->  
+
+     </div>     <!-- End col-xs-6 -->  
+
+
+
           
-    <div class="col-xs-12 search"> 
-     <div id="search-title" class="search-title">Search</div>
+    <div class="col-xs-12 col-md-6 col-md-offset-3 "> 
+  <!--   <div id="search-title" class="search-title">Search</div>  -->
 
       <form id="form-container" class="form-container" >
          <input type="text" id="searchBox" data-provide="typeahead" autocomplete="off" value="">          

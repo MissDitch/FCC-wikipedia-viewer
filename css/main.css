@@ -49,41 +49,113 @@ h1 {
 }
 h1 span {
   /* 16 * 0.0625 = 1px */
-  letter-spacing: -0.0625em;
+  letter-spacing: -0.0925em;
 }
-a:hover {
+a, a:hover, a:focus {
   text-decoration: none;
 }
+/* 
+div#leftIcon {
+  position: relative;
+}
+ #leftIcon svg{
+ width: 100%;
+}
+#rightIcon svg{
+  width: 100%;
+} 
+.svg {
+  //position: relative;
+  padding: 0;
+}
+.stackChild {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+}
+ */
+.stack {
+  position: relative;
+}
+
+ #randomLink {
+    position: absolute;
+  z-index: 2;
+  top: 30px;
+  right: 0px;
+}
+#searchLink {
+   position: absolute;
+  z-index: 2;
+  top: 30px;
+  left: 0px;
+}
+
+
+ul#wikiSuggestions a:hover{
+  text-decoration: none;
+  color: #ffffff;
+  background-color: blue;
+}
+ul#wikiSuggestions a:focus{
+   text-decoration: none;
+  color: #ffffff;
+   background-color: blue;
+}
+ul#wikiLinks a:hover {
+  border-right: 10px solid red;
+}
+
 li {
   list-style-type: none;
 }
 .container {
   padding: 0px 0;
 }
-.search {
-  position: relative;
+.random, .search {
+ width: 90px;
+ text-align: center;
 }
+/*
 .search-title {
   opacity: 0.5;
   position: absolute;
+  z-index: -10;
   left: 50px;
   top: 10px;
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
   transition: transform 0.3s ease;
- 
-
 }
 .search-title.active {
   opacity: 1;
-	-webkit-transform: translate(0,-30px);
-  transform: translate(0, -30px);
+	-webkit-transform: translate(0,-20px);
+  transform: translate(0, -20px);
 }
+*/
 .search, .results, .random {
   padding: 10px;
-  text-align: center;
+ /* margin: 10px 0; //  */
+ /*  col-md-offset-4 does not work if you manually apply margin to the same element.
+  Instead a margin of 0 auto will be applied*/
+ 
 }
-.wikiResults h3 {
+#form-container {
+  position: relative; 
+}
+input#searchBox {
+    background-color: rgba(255,255,255, 0);
+    border-radius: 36px;
+    padding: 5px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: yellowgreen;
+    outline: none;
+}
+ul#wikiSuggestions {
+  padding: 10px;
+}
+.results h3 {
   font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
   font-weight: 300;
   border-bottom: 1px solid #a2a9b1;
