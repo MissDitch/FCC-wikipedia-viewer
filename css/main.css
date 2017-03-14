@@ -1,20 +1,55 @@
-body {
-	font-family: 'Open Sans';
+/*default version*/
+@font-face {
+  font-family: 'Linux Libertine';
+  src: 
+  local('Linux Libertine'),
+  local('Linux-Libertine'),
+  /*  In this case we have two lines specifying the local font because 
+  the font name has more than one word in it. The hyphenated version 
+  caters for the way font names are stored on certain operating systems 
+  */
+ /* url(../fonts/LinLibertine_DRah.ttf)  light version, 100 */
+  url('../fonts/LinLibertine_Rah.ttf')  /* regular version, 300*/
+  /*url(../fonts/LinLibertine_Mah.ttf)  monospace version*/
+
+  format('truetype');
+  font-weight: 300;
 }
-a:hover, a:selection {
-  text-decoration: none;
-}
-li {
-  list-style-type: none;
+/*bold version */
+@font-face {
+  font-family: 'Linux Libertine';
+  /* url(../fonts/LinLibertine_RBah.ttf) bold version, 600  slightly bigger x-height*/
+  /* url(../fonts/LinLibertine_RZah.ttf) medium bold version, 500 */
+  src: 
+  local('Linux Libertine'),
+  local('Linux-Libertine'),
+  url('../fonts/LinLibertine_RZah.ttf')
+  format('truetype');
+  font-weight: 500;
 }
 
-.container {
-  padding: 100px 0;
-}
 
 body {
  /* background-color: #000000;  */
-	font-family: 'Open Sans';
+ font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
+}
+h3 {
+  font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
+
+  font-weight: 300;
+  
+}
+h1 {  
+  font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
+  font-size: 36px;
+  font-weight: 300;
+  font-variant: small-caps;
+  text-align: center;
+  letter-spacing: -0.03125em; 
+}
+h1 span {
+  /* 16 * 0.0625 = 1px */
+  letter-spacing: -0.0625em;
 }
 a:hover {
   text-decoration: none;
@@ -22,8 +57,44 @@ a:hover {
 li {
   list-style-type: none;
 }
-
 .container {
-  padding: 100px 0;
+  padding: 0px 0;
+}
+.search {
+  position: relative;
+}
+.search-title {
+  opacity: 0.5;
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  transition: transform 0.3s ease;
+ 
+
+}
+.search-title.active {
+  opacity: 1;
+	-webkit-transform: translate(0,-30px);
+  transform: translate(0, -30px);
+}
+.search, .results, .random {
+  padding: 10px;
+  text-align: center;
+}
+.wikiResults h3 {
+  font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300;
+  border-bottom: 1px solid #a2a9b1;
+  line-height: 32px;
 }
 
+/* larger devices */
+@media screen and (min-width: 39.9375em) {
+ 
+  h1 {
+    font-size: 54px;
+  }
+ 
+}   

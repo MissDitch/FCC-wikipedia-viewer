@@ -14,80 +14,43 @@
   <body>
     <noscript>
       <p>This page requires a JavaScript-enabled browser.</p>
-    </noscript>
+    </noscript>    
+
+  <div id="" class="container">
     
-    
-   <!--<nav class="navbar navbar-fixed-top">         
-  <div class="navbar-header col-xs-12 col-sm-6">    
-      <a class="navbar-brand" href="#">The weather right here right now</a>			 
-  </div>
-  
-	<div class="col-xs-12 col-sm-6" id="topNavbar">
-      <ul class="nav navbar-nav navbar-right">        
-        <li id="topBtn">button comes here</li>      
-      </ul>     
-  </div>    
-</nav>  -->
+    <h1><span>W</span>ikipedia <span>V</span>iewer</h1>         
 
-
-<div id="" class="container">  
-    <div class="col-xs-12">
-      <h4></h4>         
-   
+    <div id="" class="col-xs-12 random">
+      <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+      <button id="randomLink" type="button">Random Article</button> 
+      </a>
+    </div>   <!-- End random-->     
           
-      <div id="" class="col-xs-12 col-md-6 "> 
-           <form id="form-container" class="form-container" >
-       <input type="text" id="searchBox" data-provide="typeahead" autocomplete="off" value="">
-          
-        <button id="searchBtn" type="button">Show me</button>
-    </form>
-     <ul id="wikiSuggestions"</ul>
+    <div class="col-xs-12 search"> 
+     <div id="search-title" class="search-title">Search</div>
 
-      </div>   <!-- End -->  
-
-
-        <div id="" class="col-xs-12 col-md-6">   
-          <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
-            <button id="randomLink" type="button">Show random article</button> 
-          </a>
-      </div>   <!-- End -->  
+      <form id="form-container" class="form-container" >
+         <input type="text" id="searchBox" data-provide="typeahead" autocomplete="off" value="">          
+         <button id="searchBtn" type="button">Go</button>
+      </form>
 
       
 
-       <div class="wikiResults">
-      
-        <ul id="wikiLinks"></ul>
-    </div>
-      
-     
-          
-   
-      
-      
-          
-    </div>  <!-- End  -->    
-</div>  <!-- End container -->
+      <ul id="wikiSuggestions"</ul>
 
-<!--
-<nav class="navbar navbar-fixed-bottom">         
+    </div>   <!-- End search -->  
 
-	<div class="col-xs-12" id="myNavbar">
-  
-       <button id="" type="button" class="btn " data-toggle=""></button>
+    <div class="col-xs-12 results">      
+      <ul id="wikiLinks"></ul>
+    </div>  <!-- End results -->  
       
-       <button id="" type="button" class="btn " ></button>
-   -->
-         
-    
-   
-    
-  </div>
-</nav> 
+  </div>  <!-- End container -->
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
 
-    </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+
+  </body>
 </html>

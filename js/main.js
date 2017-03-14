@@ -2,13 +2,25 @@ function init() {
     var searchBox = document.getElementById('searchBox');
     var searchBtn = document.getElementById('searchBtn');  
     var wikiLinks = document.getElementById('wikiLinks'); 
-    var wikiSuggestions = document.getElementById('wikiSuggestions');     
+    var wikiSuggestions = document.getElementById('wikiSuggestions');  
+    
     searchBtn.addEventListener("click", loadArticles);
     searchBox.addEventListener("keyup", autoComplete);
     wikiSuggestions.addEventListener("change", chooseListItem);
+    searchBox.addEventListener("focus", active);
+    searchBox.addEventListener("blur", notActive);
 }
 
 /* AUTOCOMPLETE */
+
+function active() {
+    var searchTitle = document.getElementById('search-title');   
+    searchTitle.classList.add("active");
+}
+function notActive() {
+    var searchTitle = document.getElementById('search-title');   
+    searchTitle.classList.remove("active");
+}
 
 // get the data for the autocomplete list 
 function autoComplete() {
