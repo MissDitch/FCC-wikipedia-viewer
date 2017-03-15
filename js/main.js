@@ -20,8 +20,10 @@ function init() {
 function moveIcon() {
     var formContainer = document.getElementById("form-container");
     var movingIcon = document.getElementById("movingIcon");
+    var searchBox = document.getElementById('searchBox');
     formContainer.classList.remove("invisible");
     movingIcon.classList.add("moving");
+    searchBox.classList.add("expand");
 }
 
 /* AUTOCOMPLETE */
