@@ -4,13 +4,14 @@ function init() {
     var wikiLinks = document.getElementById('wikiLinks'); 
     var wikiSuggestions = document.getElementById('wikiSuggestions'); 
     var searchLink = document.getElementById("searchLink");
-    searchLink.addEventListener("click", moveIcon); 
+    var formContainer = document.getElementById("form-container");
     
     searchBtn.addEventListener("click", loadArticles);
     searchBox.addEventListener("keyup", autoComplete);
     wikiSuggestions.addEventListener("change", chooseListItem);
     searchBox.addEventListener("focus", active);
     searchBox.addEventListener("blur", notActive);
+    searchLink.addEventListener("click", moveIcon); 
     formContainer.addEventListener("click", moveIcon); 
 }
 
@@ -18,7 +19,9 @@ function init() {
 
 function moveIcon() {
     var formContainer = document.getElementById("form-container");
+    var movingIcon = document.getElementById("movingIcon");
     formContainer.classList.remove("invisible");
+    movingIcon.classList.add("moving");
 }
 
 /* AUTOCOMPLETE */

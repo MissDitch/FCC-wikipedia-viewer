@@ -72,6 +72,9 @@ li {
 .center {
   text-align: center;
 }
+.invisible {
+  opacity: 0;
+}
 
 /* icons, random and search buttons*/
 .stack {
@@ -102,11 +105,27 @@ li {
   float: left;
 }
 svg {
+  position: relative;
   width: 70px;
 }
+svg#movingIcon {
+    position: absolute;
+    left: 0px;
+    z-index: 10;
+    opacity: 0;
+    
+ /*   transform: translate(0px, 0px);
+  transform: scale(1, 1); 
+  transform: rotate(0deg);
+  */
+  transition: all 0.6s ease-in-out;
+}
 
-.invisible {
-  opacity: 0;
+
+svg#movingIcon.moving {  
+  opacity: 1;
+  transform: rotate(75deg) translate(114px, -61px) scale(0.7, 0.7);
+ 
 }
 
 
