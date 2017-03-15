@@ -2,13 +2,23 @@ function init() {
     var searchBox = document.getElementById('searchBox');
     var searchBtn = document.getElementById('searchBtn');  
     var wikiLinks = document.getElementById('wikiLinks'); 
-    var wikiSuggestions = document.getElementById('wikiSuggestions');  
+    var wikiSuggestions = document.getElementById('wikiSuggestions'); 
+    var searchLink = document.getElementById("searchLink");
+    searchLink.addEventListener("click", moveIcon); 
     
     searchBtn.addEventListener("click", loadArticles);
     searchBox.addEventListener("keyup", autoComplete);
     wikiSuggestions.addEventListener("change", chooseListItem);
     searchBox.addEventListener("focus", active);
     searchBox.addEventListener("blur", notActive);
+    formContainer.addEventListener("click", moveIcon); 
+}
+
+/* SHOW INPUT */
+
+function moveIcon() {
+    var formContainer = document.getElementById("form-container");
+    formContainer.classList.remove("invisible");
 }
 
 /* AUTOCOMPLETE */
