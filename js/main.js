@@ -39,6 +39,9 @@ function notActive() {
 
 // get the data for the autocomplete list 
 function autoComplete() {
+    //first clear out results of previous search
+    var wikiLinks = document.getElementById('wikiLinks'); 
+    wikiLinks.innerHTML = "";
    // var searchBox = document.getElementById('searchBox');
     if(searchBox.value != "") {
         $.ajax({
@@ -84,6 +87,7 @@ function createListElement(title) {
 //put chosen item from autocomplete list in input field
 function chooseListItem(e) {
     searchBox.value = e.target.innerHTML;
+    wikiSuggestions.innerHTML = "";
 }
 
 

@@ -27,10 +27,9 @@
   format('truetype');
   font-weight: 500;
 }
-
+ 
 
 body {
- /* background-color: #000000;  */
  font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
 }
 h3 {
@@ -51,19 +50,14 @@ h1 span {
   letter-spacing: -0.0925em;
 }
 a, a:focus, a:visited, button {
-  color: #53a6ed;
+  color: #0072ff;
+   transition: color 0.5s ease;
 }
 a:hover, button:hover {
-  color: #000000;
+  color: #000000;  
 }
 a, a:hover, a:focus {
   text-decoration: none;
-}
-.results div {
-  color: #000000;
-}
-.results div:hover {
-  background-color: #53a6ed;
 }
 li {
   list-style-type: none;
@@ -122,10 +116,10 @@ svg {
   width: 80px;
 }
 svg#movingIcon {
-    position: absolute;
-    left: 0px;
-    z-index: -10;
-    opacity: 0;    
+  position: absolute;
+  left: 0px;
+  z-index: -10;
+  opacity: 0;    
   transition: all 0.6s ease-in-out;
 }
 svg#movingIcon.moving {  
@@ -133,15 +127,16 @@ svg#movingIcon.moving {
   transform: rotate(75deg) translate(112px, -50px) scale(0.75, 0.75); 
 }
 
+/* input field and button*/
 input{
-    background-color: rgba(255,255,255, 0);
-    width: 35px;
-    border-radius: 36px;
-    padding: 3px 6px;
-    border-width: 4px;
-    border-style: solid;
-    border-color: #000000;
-    outline: none;
+  background-color: rgba(255,255,255, 0);
+  width: 35px;
+  border-radius: 36px;
+  padding: 3px 6px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000000;
+  outline: none;
 }
 input.expand {
   width: 220px;
@@ -149,40 +144,46 @@ input.expand {
   transition: width 0.6s ease-in-out;
 }
 button#searchBtn {
-    background-color: transparent;
-    box-sizing: border-box;
-    padding: 7px 9px 7px 9px;
-    border-width: 0px;
-    border-style: outset;
-    border-color: transparent;
-    border-image: none;
-    outline: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 7px 9px 7px 9px;
+  border-width: 0px;
+  border-style: outset;
+  border-color: transparent;
+  border-image: none;
+  outline: none;
 }
 
+/* autocomplete list*/
 ul#wikiSuggestions {
-    padding: 0 10px 0 24px;
-    text-align: left;
+  padding: 5px 10px 0 24px;
+  text-align: left;
 }
-ul#wikiSuggestions a:hover{
+ul#wikiSuggestions a:focus, ul#wikiSuggestions a:hover{
   text-decoration: none;
   color: #ffffff;
-  background-color: blue;
-}
-ul#wikiSuggestions a:focus{
-   text-decoration: none;
-  color: #ffffff;
-   background-color: blue;
-}
-ul#wikiLinks a:hover {
-  //border-right: 10px solid red;
+  padding: 3px; 
+  background-color:#00c6ff;
 }
 
-
+/* search result list */
 .results{
   padding: 10px;
  /* margin: 10px 0; //  */
  /*  col-md-offset-4 does not work if you manually apply margin to the same element.
   Instead a margin of 0 auto will be applied*/ 
+}
+.results div{
+  padding: 0px 5px;
+  color: #000000;
+  transition: all 0.3s ease-in-out;
+}
+.results div:hover {
+   /* uiGradients.com Facebook Messenger */
+  background: #00c6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #00c6ff, #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #00c6ff, #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
 }
 .results h3 {
   font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
