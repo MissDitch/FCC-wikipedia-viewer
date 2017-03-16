@@ -9,8 +9,6 @@ function init() {
     searchBtn.addEventListener("click", loadArticles);
     searchBox.addEventListener("keyup", autoComplete);
     wikiSuggestions.addEventListener("change", chooseListItem);
-    searchBox.addEventListener("focus", active);
-    searchBox.addEventListener("blur", notActive);
     searchLink.addEventListener("click", moveIcon); 
     formContainer.addEventListener("click", moveIcon); 
 }
@@ -27,15 +25,6 @@ function moveIcon() {
 }
 
 /* AUTOCOMPLETE */
-
-function active() {
-    var searchTitle = document.getElementById('search-title');   
-    searchTitle.classList.add("active");
-}
-function notActive() {
-    var searchTitle = document.getElementById('search-title');   
-    searchTitle.classList.remove("active");
-}
 
 // get the data for the autocomplete list 
 function autoComplete() {
@@ -96,6 +85,8 @@ function chooseListItem(e) {
 //get the data for the list of articles
 function loadArticles(e) {
     //e.preventDefault(); // needed if button has 'type=submit' attribute. Without it no results are shown
+    var results = document.getElementsByClassName("results");
+    results[0].classList.remove("active");
     wikiSuggestions.innerHTML = "";
     wikiLinks.innerHTML = "";    
     var searchString = searchBox.value;
@@ -122,6 +113,8 @@ function loadArticles(e) {
 
 //show articles list
 function showArticles(data) {
+    var results = document.getElementsByClassName("results");
+    results[0].classList.add("active");
     var titles = data[1];
     var paragraphs = data[2];
     var urls = data[3];

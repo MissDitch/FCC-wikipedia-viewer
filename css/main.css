@@ -97,13 +97,13 @@ li {
   float: right; 
   right: 0px;
   text-align: right;
-  padding: 5px 10px 15px 5px;
+  padding: 15px 10px 20px 5px;
 }
 #searchLink { 
   float: left;  
   left: 0px;
   text-align: left;
-  padding: 5px 5px 15px 10px;
+  padding: 15px 5px 20px 10px;
 }
 #leftIcon svg {
   float: right;  
@@ -124,7 +124,7 @@ svg#movingIcon {
 }
 svg#movingIcon.moving {  
   opacity: 1;
-  transform: rotate(75deg) translate(112px, -50px) scale(0.75, 0.75); 
+  transform: rotate(75deg) translate(126px, -45px) scale(0.75, 0.75); 
 }
 
 /* input field and button*/
@@ -167,31 +167,47 @@ ul#wikiSuggestions a:focus, ul#wikiSuggestions a:hover{
 }
 
 /* search result list */
+
+@keyframes slideUp {
+  from {
+     transform: translateY(400px);
+     opacity: 0; 
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.results.active {
+  animation: slideUp .65s .5s forwards;
+}
 .results{
   padding: 10px;
+  opacity: 0;
+  transform: translateY(400px);
  /* margin: 10px 0; //  */
  /*  col-md-offset-4 does not work if you manually apply margin to the same element.
   Instead a margin of 0 auto will be applied*/ 
+ 
 }
 .results div{
   padding: 0px 5px;
-  color: #000000;
-  transition: all 0.3s ease-in-out;
+  color: #0072ff;
+  transition: color 0.3s ease-in-out;
 }
 .results div:hover {
-   /* uiGradients.com Facebook Messenger */
-  background: #00c6ff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #00c6ff, #0072ff); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #00c6ff, #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: white;
+  color: #000000;
 }
 .results h3 {
   font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
   font-weight: 300;
-  border-bottom: 1px solid #a2a9b1;
   line-height: 32px;
+  border-bottom: 1px solid #a2a9b1;
+  margin: 5px 0;
 }
-
+ul#wikiLinks {
+  padding: 0 5px;
+}
 
 /* larger devices */
 @media screen and (min-width: 39.9375em) {
@@ -199,9 +215,8 @@ ul#wikiSuggestions a:focus, ul#wikiSuggestions a:hover{
   h1 {
     font-size: 54px;
   }
-  /* 
-  input {
-    width: 300px;
-  } */
+  ul#wikiLinks {
+  padding: 5px 10px 0 24px;
+  }
  
 }   
