@@ -1,7 +1,6 @@
 function init() {
     var searchBox = document.getElementById('searchBox');
     var searchBtn = document.getElementById('searchBtn');  
-    var wikiLinks = document.getElementById('wikiLinks'); 
     var wikiSuggestions = document.getElementById('wikiSuggestions'); 
     var searchLink = document.getElementById("searchLink");
     var formContainer = document.getElementById("form-container");
@@ -11,6 +10,8 @@ function init() {
     wikiSuggestions.addEventListener("change", chooseListItem);
     searchLink.addEventListener("click", moveIcon); 
     formContainer.addEventListener("click", moveIcon); 
+
+    searchBox.value = "";
 }
 
 /* SHOW INPUT */
@@ -19,8 +20,18 @@ function moveIcon() {
     var formContainer = document.getElementById("form-container");
     var movingIcon = document.getElementById("movingIcon");
     var searchBox = document.getElementById('searchBox');
+    searchBox.value = "";
     formContainer.classList.remove("invisible");
-    movingIcon.classList.add("moving");
+    /* IE error handling */
+    try {
+        movingIcon.classList.add("moving");
+    }
+    catch(err) {
+        searchBox.classList.add("expand");
+        alert("This app has an animation with the top right looking glass moving down! \n" +
+        "If you use another browser you can see it.\n" + 
+        "But it's okay, you can go ahead and use this viewer anyway!");
+    }    
     searchBox.classList.add("expand");
 }
 
@@ -29,9 +40,9 @@ function moveIcon() {
 // get the data for the autocomplete list 
 function autoComplete() {
     //first clear out results of previous search
-    var wikiLinks = document.getElementById('wikiLinks'); 
-    wikiLinks.innerHTML = "";
-   // var searchBox = document.getElementById('searchBox');
+    var wikiResults = document.getElementById('wikiResults'); 
+    wikiResults.innerHTML = "";
+    var searchBox = document.getElementById('searchBox');
     if(searchBox.value != "") {
         $.ajax({
             url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchBox.value + 
@@ -49,6 +60,7 @@ function autoComplete() {
 
 //show autocomplete list
 function showOptions(titles) {
+    var wikiSuggestions = document.getElementById('wikiSuggestions'); 
     wikiSuggestions.innerHTML = "";    
     var length = titles.length;
     var count = 1;
@@ -75,6 +87,8 @@ function createListElement(title) {
 
 //put chosen item from autocomplete list in input field
 function chooseListItem(e) {
+    var searchBox = document.getElementById('searchBox');
+    var wikiSuggestions = document.getElementById('wikiSuggestions'); 
     searchBox.value = e.target.innerHTML;
     wikiSuggestions.innerHTML = "";
 }
@@ -87,8 +101,11 @@ function loadArticles(e) {
     //e.preventDefault(); // needed if button has 'type=submit' attribute. Without it no results are shown
     var results = document.getElementsByClassName("results");
     results[0].classList.remove("active");
+    var wikiSuggestions = document.getElementById('wikiSuggestions'); 
+    var wikiResults = document.getElementById('wikiResults'); 
+    var searchBox = document.getElementById('searchBox');
     wikiSuggestions.innerHTML = "";
-    wikiLinks.innerHTML = "";    
+    wikiResults.innerHTML = "";    
     var searchString = searchBox.value;
     if (searchString == "") {
         return;
@@ -105,7 +122,7 @@ function loadArticles(e) {
     });  
 
     var wikiRequestTimeout = setTimeout(function(){
-       wikiLinks.innerHTML = "failed to get wikipedia resources";
+       wikiResults.innerHTML = "failed to get wikipedia resources";
     }, 8000);
 
     searchBox.value = "";
@@ -124,7 +141,7 @@ function showArticles(data) {
         var title = titles[i];
         var paragraph = paragraphs[i];
         var article = createListItem(url, title, paragraph);            
-        wikiLinks.appendChild(article);
+        wikiResults.appendChild(article);
     }     
 }
 

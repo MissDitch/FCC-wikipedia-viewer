@@ -49,19 +49,34 @@ h1 span {
   /* 16 * 0.0625 = 1px */
   letter-spacing: -0.0925em;
 }
+li {
+  list-style-type: none;
+  padding: 5px 0;
+}
+a {
+  padding: 5px 0;
+}
 a, a:focus, a:visited, button {
   color: #0072ff;
    transition: color 0.5s ease;
 }
-a:hover, button:hover {
+a:hover, a:active, button:hover, button:active {
   color: #000000;  
 }
 a, a:hover, a:focus {
   text-decoration: none;
 }
-li {
-  list-style-type: none;
+p:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid #00c6ff;
+  display: inline-block;
+  transform: translate(10px, 2px);
 }
+
 .container {
   padding: 0px 0;
 }
@@ -71,8 +86,8 @@ li {
 }
 .no-gutters > .col,
 .no-gutters > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
+  padding-right: 0;
+  padding-left: 0;
 }
 .center {
   text-align: center;
@@ -81,13 +96,13 @@ li {
   opacity: 0;
 }
 
+
 /* icons, random and search buttons*/
 .stack {
   position: relative;
 }
 #randomLink, #searchLink {
-  font-variant: small-caps;
-  font-size: 16px;
+  font-size: 18px;
   width: 165px;
   clear: both;
   z-index: 2;
@@ -97,13 +112,13 @@ li {
   float: right; 
   right: 0px;
   text-align: right;
-  padding: 15px 10px 20px 5px;
+  padding: 15px 10px 15px 5px;
 }
 #searchLink { 
   float: left;  
   left: 0px;
   text-align: left;
-  padding: 15px 5px 20px 10px;
+  padding: 15px 5px 15px 10px;
 }
 #leftIcon svg {
   float: right;  
@@ -124,8 +139,13 @@ svg#movingIcon {
 }
 svg#movingIcon.moving {  
   opacity: 1;
-  transform: rotate(75deg) translate(126px, -45px) scale(0.75, 0.75); 
+  -webkit-transform: rotate(75deg) translate(130px, -44px) scale(0.75, 0.75); 
+  -moz-transform: rotate(75deg) translate(130px, -44px) scale(0.75, 0.75); 
+  -ms-transform: rotate(75deg) translate(130px, -44px) scale(0.75, 0.75); 
+  -o-transform: rotate(75deg) translate(130px, -44px) scale(0.75, 0.75); 
+  transform: rotate(75deg) translate(130px, -44px) scale(0.75, 0.75); 
 }
+
 
 /* input field and button*/
 input{
@@ -140,13 +160,14 @@ input{
 }
 input.expand {
   width: 220px;
+  height: 40px;
   transform-origin: center right;
   transition: width 0.6s ease-in-out;
 }
 button#searchBtn {
   background-color: transparent;
   box-sizing: border-box;
-  padding: 7px 9px 7px 9px;
+  padding: 14px;
   border-width: 0px;
   border-style: outset;
   border-color: transparent;
@@ -154,9 +175,10 @@ button#searchBtn {
   outline: none;
 }
 
+
 /* autocomplete list*/
 ul#wikiSuggestions {
-  padding: 5px 10px 0 24px;
+  padding: 5px 10px 0 38px;
   text-align: left;
 }
 ul#wikiSuggestions a:focus, ul#wikiSuggestions a:hover{
@@ -165,18 +187,33 @@ ul#wikiSuggestions a:focus, ul#wikiSuggestions a:hover{
   padding: 3px; 
   background-color:#00c6ff;
 }
+ul#wikiSuggesions li{
+  padding: 3px 0;
+}
+
 
 /* search result list */
 
 @keyframes slideUp {
   from {
-     transform: translateY(400px);
-     opacity: 0; 
+    -webkit-transform: translateY(400px); 
+    -moz-transform: translateY(400px); 
+    -ms-transform: translateY(400px); 
+    -o-transform: translateY(400px);
+    transform: translateY(400px);
+    opacity: 0; 
   }
   to {
+    -webkit-transform: translateY(0px); 
+    -moz-transform: translateY(0px); 
+    -ms-transform: translateY(0px); 
+    -o-transform: translateY(0px);
     transform: translateY(0px);
     opacity: 1;
   }
+}
+#searchInput {
+  text-align: center;
 }
 .results.active {
   animation: slideUp .65s .5s forwards;
@@ -184,39 +221,83 @@ ul#wikiSuggestions a:focus, ul#wikiSuggestions a:hover{
 .results{
   padding: 10px;
   opacity: 0;
+  -webkit-transform: translateY(400px); 
+  -moz-transform: translateY(400px); 
+  -ms-transform: translateY(400px); 
+  -o-transform: translateY(400px);
   transform: translateY(400px);
- /* margin: 10px 0; //  */
- /*  col-md-offset-4 does not work if you manually apply margin to the same element.
-  Instead a margin of 0 auto will be applied*/ 
- 
 }
 .results div{
   padding: 0px 5px;
-  color: #0072ff;
-  transition: color 0.3s ease-in-out;
-}
-.results div:hover {
   color: #000000;
 }
 .results h3 {
   font-family: 'Linux Libertine', Georgia, 'Times New Roman', Times, serif;
   font-weight: 300;
-  line-height: 32px;
-  border-bottom: 1px solid #a2a9b1;
-  margin: 5px 0;
+  border-bottom: 1px solid #0072ff;  /*  a2a9b1 wikipedia color */
+  margin: 8px 0;
+  padding: 0 0 3px 0;
 }
-ul#wikiLinks {
+ul#wikiResults {
   padding: 0 5px;
 }
+#wikiResults li {
+  padding: 1px 0;
+}
 
-/* larger devices */
-@media screen and (min-width: 39.9375em) {
- 
+
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 20em) {  /* 320 / 16 = 20em */
+  ul#wikiSuggestions {
+    padding: 5px 10px 0 38px;
+  }
+}   
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 30em) {  /* 480 / 16 = 30em */
+  ul#wikiSuggestions {
+    padding: 5px 10px 0 135px;
+  }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 48em) {  /* 768 / 16 =  48em */
+  ul#wikiSuggestions {
+    padding: 5px 10px 0 232px;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 62em) {  /* 992 / 16 = 62em */
   h1 {
     font-size: 54px;
   }
-  ul#wikiLinks {
-  padding: 5px 10px 0 24px;
+  li {
+    padding: 2px 0;
   }
- 
-}   
+  ul#wikiSuggestions {
+    padding: 5px 10px 0 20px;
+  }
+  ul#wikiResults {
+    padding: 5px 10px 0 10px;
+  }
+  .results div{
+    color: #0072ff;
+    transition: color 0.3s ease-in-out;
+  }
+  .results div:hover {
+   color: #000000;
+  }
+  .results h3 {
+    border-bottom: 1px solid #a2a9b1;  /*   wikipedia color */
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 75em) { /* 1200 / 16 = 75em */
+  ul#wikiSuggestions {
+    padding: 5px 10px 0 51px;
+  }
+}
+   
+
