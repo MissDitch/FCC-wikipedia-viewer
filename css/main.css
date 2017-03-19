@@ -11,7 +11,7 @@
  /* url(../fonts/LinLibertine_DRah.ttf)  light version, 100 */
   url('../fonts/LinLibertine_Rah.ttf')  /* regular version, 300*/
   /*url(../fonts/LinLibertine_Mah.ttf)  monospace version*/
-
+ /* url('https://raw.githubusercontent.com/MissDitch/FCC-wikipedia-viewer/master/fonts/LinLibertine_Rah.ttf') */
   format('truetype');
   font-weight: 300;
 }
@@ -24,6 +24,7 @@
   local('Linux Libertine'),
   local('Linux-Libertine'),
   url('../fonts/LinLibertine_RZah.ttf')
+  /* url('https://raw.githubusercontent.com/MissDitch/FCC-wikipedia-viewer/master/fonts/LinLibertine_RZah.ttf') */
   format('truetype');
   font-weight: 500;
 }
@@ -249,7 +250,9 @@ ul#wikiSuggesions li{
   animation: fadeIn .65s .5s forwards, slideUp .65s .5s forwards;
   
 }
-
+.results.visible {
+  opacity: 1;
+}
 .results div{
   padding: 0px 5px;
   color: #000000;

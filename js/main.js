@@ -117,7 +117,7 @@ function loadArticles(e) {
         url: wikiUrl,
         dataType: "jsonp"
     }).done(function(data)   {
-        showArticles(data);
+        showArticles(data, searchString);
         clearTimeout(wikiRequestTimeout);
     });  
 
@@ -129,20 +129,29 @@ function loadArticles(e) {
 }
 
 //show articles list
-function showArticles(data) {
+function showArticles(data, searchString) {
     var results = document.getElementsByClassName("results");
     results[0].classList.add("active");
-    var titles = data[1];
-    var paragraphs = data[2];
-    var urls = data[3];
-    var length = titles.length;
-    for (var i = 0; i < length; i++) {  
-        var url =  urls[i];
-        var title = titles[i];
-        var paragraph = paragraphs[i];
-        var article = createListItem(url, title, paragraph);            
-        wikiResults.appendChild(article);
-    }     
+    var wikiResults = document.getElementById('wikiResults');
+    if (data[1].length === 0) {
+       // results[0].classList.add("visible");
+        wikiResults.innerHTML = "Sorry, Wikipedia returned no articles about " + searchString 
+        + "!<br>Try another search instead.";
+    }
+    else {        
+        
+        var titles = data[1];
+        var paragraphs = data[2];
+        var urls = data[3];
+        var length = titles.length;
+        for (var i = 0; i < length; i++) {  
+            var url =  urls[i];
+            var title = titles[i];
+            var paragraph = paragraphs[i];
+            var article = createListItem(url, title, paragraph);            
+            wikiResults.appendChild(article);
+        }     
+    }    
 }
 
 //create individual listitem for articles list
