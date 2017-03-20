@@ -28,9 +28,6 @@ function moveIcon() {
     }
     catch(err) {
         searchBox.classList.add("expand");
-        alert("This app has an animation with the top right looking glass moving down! \n" +
-        "If you use another browser you can see it.\n" + 
-        "But it's okay, you can go ahead and use this viewer anyway!");
     }    
     searchBox.classList.add("expand");
 }

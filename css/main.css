@@ -4,22 +4,15 @@
   src: 
   local('Linux Libertine'),
   local('Linux-Libertine'),
-  /*  In this case we have two lines specifying the local font because 
-  the font name has more than one word in it. The hyphenated version 
-  caters for the way font names are stored on certain operating systems 
-  */
- /* url(../fonts/LinLibertine_DRah.ttf)  light version, 100 */
   url('../fonts/LinLibertine_Rah.ttf')  /* regular version, 300*/
-  /*url(../fonts/LinLibertine_Mah.ttf)  monospace version*/
  /* url('https://raw.githubusercontent.com/MissDitch/FCC-wikipedia-viewer/master/fonts/LinLibertine_Rah.ttf') */
   format('truetype');
   font-weight: 300;
 }
+
 /*bold version */
 @font-face {
   font-family: 'Linux Libertine';
-  /* url(../fonts/LinLibertine_RBah.ttf) bold version, 600  slightly bigger x-height*/
-  /* url(../fonts/LinLibertine_RZah.ttf) medium bold version, 500 */
   src: 
   local('Linux Libertine'),
   local('Linux-Libertine'),
@@ -247,8 +240,7 @@ ul#wikiSuggesions li{
   -webkit-animation:  fadeIn .65s .5s forwards, slideUp .65s .5s forwards;
   -moz-animation: fadeIn .65s .5s forwards, slideUp .65s .5s forwards;
   -o-animation: fadeIn .65s .5s forwards, slideUp .65s .5s forwards;
-  animation: fadeIn .65s .5s forwards, slideUp .65s .5s forwards;
-  
+  animation: fadeIn .65s .5s forwards, slideUp .65s .5s forwards;  
 }
 .results.visible {
   opacity: 1;
