@@ -14,7 +14,7 @@ function init() {
     */
     document.addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
-        console.log(e.which);
+        //console.log(e.which);
         if (key === 13) { // 13 is enter
             searchBtn.click();
         }
@@ -25,20 +25,44 @@ function init() {
     formContainer.addEventListener("click", moveIcon); 
 
     searchBox.value = "";
+    
 }
 //prevent scrollbar from adding up to width of page
 // http://stackoverflow.com/questions/18548465/prevent-scroll-bar-from-adding-up-to-the-width-of-page-on-chrome
 function checkScrollBars() {
     var b = document.body;
+    var cont = document.getElementById("cont");
     var normalw = 0;
     var scrollw = 0;
+    //console.log(normalw + ", " + scrollw);
     if (b.scrollHeight > b.clientHeight) {
         normalw = window.innerWidth;
         scrollw = normalw - b.clientWidth;
-        b.setAttribute("style", "margin-right:-" + scrollw + "px");
+        console.log("body width " + b.clientWidth);
+        console.log("cont.width " + cont.clientWidth);
+        console.log("window.innerWidth " + normalw);
+        console.log(normalw + ", " + scrollw);
+        cont.setAttribute("style", "margin-right:-" + scrollw + "px");
     }
   
 }
+/*function checkScrollBars() {
+    //var b = document.body;
+    var cont = document.getElementById("cont");
+    var normalw = 0;
+    var scrollw = 0;
+    //console.log(normalw + ", " + scrollw);
+    if (cont.scrollHeight > cont.clientHeight) {
+        normalw = window.innerWidth;
+        scrollw = normalw - cont.clientWidth;
+        //b.clientwidth stays the same with or without scrollbar
+        console.log("cont.clientWidth " + cont.clientWidth);
+        console.log(normalw + ", " + scrollw);
+        cont.setAttribute("style", "margin-right:-" + scrollw + "px");
+    }
+  
+}
+
 
 
 /* SHOW INPUT */
@@ -201,3 +225,6 @@ function showArticles(data, searchString) {
 }
 
 init();
+window.onresize = checkScrollBars();
+window.onload = checkScrollBars();
+//document.body.clientWidth.onchange = checkScrollBars();
