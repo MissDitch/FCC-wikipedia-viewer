@@ -7,6 +7,19 @@ function init() {
     
     searchBtn.addEventListener("click", loadArticles);
     searchBox.addEventListener("keyup", autoComplete);
+
+    /* hit enter instead of clicking the go button to do the search:
+    http://stackoverflow.com/questions/155188/trigger-a-button-click-with-javascript-on-the-enter-key-in-a-text-box
+     https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/charCode#Notes
+    */
+    document.addEventListener("keypress", function(e) {
+        var key = e.which || e.keyCode;
+        console.log(e.which);
+        if (key === 13) { // 13 is enter
+            searchBtn.click();
+        }
+    });
+
     wikiSuggestions.addEventListener("change", chooseListItem);
     searchLink.addEventListener("click", moveIcon); 
     formContainer.addEventListener("click", moveIcon); 
