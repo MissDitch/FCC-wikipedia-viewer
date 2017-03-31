@@ -26,20 +26,6 @@ function init() {
 
     searchBox.value = "";
 }
-//prevent scrollbar from adding up to width of page
-// http://stackoverflow.com/questions/18548465/prevent-scroll-bar-from-adding-up-to-the-width-of-page-on-chrome
-function checkScrollBars() {
-    var b = document.body;
-    var normalw = 0;
-    var scrollw = 0;
-    if (b.scrollHeight > b.clientHeight) {
-        normalw = window.innerWidth;
-        scrollw = normalw - b.clientWidth;
-        b.setAttribute("style", "margin-right:-" + scrollw + "px");
-    }
-  
-}
-
 
 /* SHOW INPUT */
 
@@ -63,7 +49,6 @@ function moveIcon() {
 
 // get the data for the autocomplete list 
 function autoComplete() {
-    checkScrollBars();
     //first clear out results of previous search
     var wikiResults = document.getElementById('wikiResults'); 
     wikiResults.innerHTML = "";
