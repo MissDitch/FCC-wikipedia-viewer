@@ -32,16 +32,23 @@ function init() {
 function checkScrollBars() {
     var b = document.body;
     var cont = document.getElementById("cont");
-    var normalw = 0;
     var scrollw = 0;
-    //console.log(normalw + ", " + scrollw);
-    if (b.scrollHeight > b.clientHeight) {
-        normalw = window.innerWidth;
-        scrollw = normalw - b.clientWidth;
-        console.log("body width " + b.clientWidth);
-        console.log("cont.width " + cont.clientWidth);
-        console.log("window.innerWidth " + normalw);
-        console.log(normalw + ", " + scrollw);
+    console.log("b.scrollHeight " + b.scrollHeight + ", window.innerHeight " + window.innerHeight);
+    console.log("cont.offsetHeight " + cont.offsetHeight );
+    console.log("cont.offsetWidth " + cont.offsetWidth );
+    console.log("b.clientWidth " + b.clientWidth);
+    console.log("cont.clientWidth " + cont.clientWidth);
+    console.log("window.innerWidth " + window.innerWidth);
+    console.log("scrollw " + scrollw);
+
+    if (b.scrollHeight > window.innerHeight) {
+        console.log("b.scrollHeight " + b.scrollHeight + ", window.innerHeight " + window.innerHeight);
+        
+        scrollw = window.innerWidth - b.clientWidth;
+        console.log("b.clientWidth " + b.clientWidth);
+        console.log("cont.clientWidth " + cont.clientWidth);
+        console.log("window.innerWidth " + window.innerWidth);
+        console.log("scrollw " + scrollw);
         cont.setAttribute("style", "margin-right:-" + scrollw + "px");
     }
   
@@ -227,4 +234,4 @@ function showArticles(data, searchString) {
 init();
 window.onresize = checkScrollBars();
 window.onload = checkScrollBars();
-//document.body.clientWidth.onchange = checkScrollBars();
+document.body.clientWidth.onchange = checkScrollBars();
