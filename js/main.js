@@ -12,10 +12,11 @@ function init() {
     http://stackoverflow.com/questions/155188/trigger-a-button-click-with-javascript-on-the-enter-key-in-a-text-box
      https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/charCode#Notes
     */
-    document.addEventListener("keypress", function(e) {
-        var key = e.which || e.keyCode;
-        console.log(e.which);
+    window.addEventListener("keydown", function(e) {
+        var key = e.which || e.key; //keyCode is deprecated
+        console.log(e.key);
         if (key === 13) { // 13 is enter
+            e.preventDefault();
             searchBtn.click();
         }
     });
